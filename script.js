@@ -109,7 +109,7 @@ function draw() {
         }
     }
     for (var i in personArr) {
-        personArr[i].mul()
+        personArr[i].mul(6, Person, 1, personArr)
     }
     for (var i in coronaArr) {
         coronaArr[i].eat()

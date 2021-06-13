@@ -1,4 +1,4 @@
-class Person {
+class Person  extends Main{
     constructor(x, y) {
         this.x = x;
         this.y = y;
@@ -28,19 +28,7 @@ class Person {
         }
         return found
     }
-    mul() {
-        this.multiplay++;
-        var found = this.chooseCell(0)
-        var exact = random(found)
-        if (exact && this.multiplay > 6) {
-            let x = exact[0]
-            let y = exact[1]
-            let person = new Person(x, y)
-            personArr.push(person)
-            matrix[y][x] = 1
-            this.multiplay = 0
-        }
-    }
+ 
 
 
 }
