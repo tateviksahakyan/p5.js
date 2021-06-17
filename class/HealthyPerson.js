@@ -1,4 +1,5 @@
-class HealthyPerson {
+let Main=require('./main')
+class HealthyPerson extends Main {
     constructor(x, y) {
         this.x = x;
         this.y = y;

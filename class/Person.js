@@ -1,3 +1,4 @@
+let Main=require('./main')
 class Person  extends Main{
     constructor(x, y) {
         this.x = x;

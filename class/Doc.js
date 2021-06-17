@@ -1,4 +1,5 @@
-class Doc {
+let Main=require('./main')
+class Doc extends Main {
     constructor(x, y) {
         this.x = x;
         this.y = y;

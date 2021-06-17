@@ -1,4 +1,5 @@
-class Corona {
+let Main=require('./main')
+class Corona extends Main {
     constructor(x, y) {
         this.x = x;
         this.y = y;

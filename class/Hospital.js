@@ -1,4 +1,5 @@
-class Hospital {
+let Main=require('./main')
+class Hospital extends Main{
     constructor(x, y) {
         this.x = x;
         this.y = y;
