@@ -101,8 +101,6 @@ function nkarel() {
             }
 
 
-
-
             for (var i in personArr) {
                 var emptyCells = personArr[i].chooseCell(0)
             }
