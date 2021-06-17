@@ -76,7 +76,7 @@ function preload() {
 }
 
 
-function draw() {
+function nkarel() {
 
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
@@ -101,15 +101,13 @@ function draw() {
             }
 
 
-
-
             for (var i in personArr) {
                 var emptyCells = personArr[i].chooseCell(0)
             }
         }
     }
     for (var i in personArr) {
-        personArr[i].mul(6, Person, 1, personArr)
+        personArr[i].mul()
     }
     for (var i in coronaArr) {
         coronaArr[i].eat()
@@ -125,3 +123,4 @@ function draw() {
         healthyPersonArr[i].eat()
     }
 }
+setInterval(nkarel, 1000);
