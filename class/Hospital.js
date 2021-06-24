@@ -1,19 +1,9 @@
-let Main=require('./main')
-class Hospital extends Main{
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
+let Main = require('./Main')
+module.exports = class Hospital extends Main {
+    constructor(x, y, index){
+        super(x, y, index);
         this.energy = 20;
-        this.directions = [
-            [this.x - 1, this.y - 1],
-            [this.x, this.y - 1],
-            [this.x + 1, this.y - 1],
-            [this.x - 1, this.y],
-            [this.x + 1, this.y],
-            [this.x - 1, this.y + 1],
-            [this.x, this.y + 1],
-            [this.x + 1, this.y + 1]
-        ];
+    
     }
     getNewCoordinates() {
         this.directions = [
@@ -27,14 +17,14 @@ class Hospital extends Main{
             [this.x + 1, this.y + 1]
         ];
     };
-    chooseCell(character1,character2) {
+    chooseCell(character1, character2) {
         this.getNewCoordinates();
         var found = [];
         for (var i in this.directions) {
             var x = this.directions[i][0]
             var y = this.directions[i][1]
             if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == character1 ) {
+                if (matrix[y][x] == character1) {
                     found.push(this.directions[i]);
                 }
             }
@@ -43,7 +33,7 @@ class Hospital extends Main{
     };
     mul() {
         let found = this.chooseCell(0);
-        let exact = random(found)
+        let exact = found[Math.floor(Math.random() * found.length)];
         if (exact && this.energy > 8) {
             let x = exact[0];
             let y = exact[1];
@@ -55,12 +45,12 @@ class Hospital extends Main{
     }
     eat() {
         let found = this.chooseCell(8);
-        let exact = random(found);
+        let exact = found[Math.floor(Math.random() * found.length)];
         if (exact) {
             this.energy += 5;
             let x = exact[0];
             let y = exact[1];
-          
+
             for (var i = 0; i < personArr.length; i++) {
                 if (x == personArr[i].x && y == personArr[i].y) {
                     personArr.splice(i, 8)
@@ -74,14 +64,13 @@ class Hospital extends Main{
                 this.mul();
             }
 
-        }
-        else {
+        } else {
             this.move()
         }
     };
     move() {
         let found = this.chooseCell(0);
-        let exact = random(found);
+        let exact = found[Math.floor(Math.random() * found.length)];
         if (exact) {
             let x = exact[0];
             let y = exact[1];
@@ -91,8 +80,7 @@ class Hospital extends Main{
             this.energy--;
             if (this.energy < 0) {
                 this.die()
-            }
-            else {
+            } else {
                 this.energy--
                 if (this.energy < 0) {
                     this.die()

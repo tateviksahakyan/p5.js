@@ -1,19 +1,9 @@
-let Main=require('./main')
-class Corona extends Main {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
+let Main = require('./Main')
+module.exports= class Corona  extends Main{
+    constructor(x, y, index){
+        super(x, y, index);
         this.energy = 20;
-        this.directions = [
-            [this.x - 1, this.y - 1],
-            [this.x, this.y - 1],
-            [this.x + 1, this.y - 1],
-            [this.x - 1, this.y],
-            [this.x + 1, this.y],
-            [this.x - 1, this.y + 1],
-            [this.x, this.y + 1],
-            [this.x + 1, this.y + 1]
-        ];
+    
     }
     getNewCoordinates() {
         this.directions = [
@@ -43,7 +33,7 @@ class Corona extends Main {
     };
     mul() {
         let found = this.chooseCell(0);
-        let exact = random(found)
+        let exact = found[Math.floor(Math.random() * found.length)];
         if (exact && this.energy > 8) {
             let x = exact[0];
             let y = exact[1];
@@ -55,7 +45,7 @@ class Corona extends Main {
     }
     eat() {
         let found = this.chooseCell(1);
-        let exact = random(found);
+        let exact = found[Math.floor(Math.random() * found.length)];;
         if (exact) {
             this.energy += 5;
             let x = exact[0];
@@ -80,7 +70,7 @@ class Corona extends Main {
     };
     move() {
         let found = this.chooseCell(0);
-        let exact = random(found);
+        let exact = found[Math.floor(Math.random() * found.length)];
         if (exact) {
             let x = exact[0];
             let y = exact[1];

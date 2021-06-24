@@ -1,21 +1,24 @@
-module.export = class Main {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        this.multiplay = 0;
-        this.directions = [
-            [this.x - 1, this.y - 1],
-            [this.x, this.y - 1],
-            [this.x + 1, this.y - 1],
-            [this.x - 1, this.y],
-            [this.x + 1, this.y],
-            [this.x - 1, this.y + 1],
-            [this.x, this.y + 1],
-            [this.x + 1, this.y + 1]
-        ];
-
-    }
-    chooseCell(character) {
+module.exports = class Main {
+    constructor(x, y, index) {
+		this.x = x;
+		this.y = y;
+		this.index = index;
+		this.multiply = 0;
+		
+	}
+    getNewDirections(){
+		this.directions = [
+			[this.x - 1, this.y - 1],
+			[this.x, this.y - 1],
+			[this.x + 1, this.y - 1],
+			[this.x - 1, this.y],
+			[this.x + 1, this.y],
+			[this.x - 1, this.y + 1],
+			[this.x, this.y + 1],
+			[this.x + 1, this.y + 1]
+		];
+	}
+	chooseCell(character) {
         var found = [];
         for (var i in this.directions) {
             var x = this.directions[i][0]
@@ -28,19 +31,5 @@ module.export = class Main {
         }
         return found
     }
-    mul(quantity, Class, index, arr) {
-        this.multiplay++;
-        var found = this.chooseCell(0)
-        var exact = random(found)
-        if (exact && this.multiplay > quantity) {
-            let x = exact[0]
-            let y = exact[1]
-            let person = new Class(x, y, index)
-            arr.push(person)
-            matrix[y][x] = index
-            this.multiplay = 0
-        }
-    }
-
 
 }

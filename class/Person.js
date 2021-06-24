@@ -1,35 +1,22 @@
-let Main=require('./main')
-class Person  extends Main{
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
+let Main = require('./Main')
+module.exports= class Person  extends Main{
+    constructor(x, y, index, multiply) {
+        super(x, y, index, multiply);
         this.multiplay = 0;
-        this.directions = [
-            [this.x - 1, this.y - 1],
-            [this.x, this.y - 1],
-            [this.x + 1, this.y - 1],
-            [this.x - 1, this.y],
-            [this.x + 1, this.y],
-            [this.x - 1, this.y + 1],
-            [this.x, this.y + 1],
-            [this.x + 1, this.y + 1]
-        ];
-
-    }
-    chooseCell(character) {
-        var found = [];
-        for (var i in this.directions) {
-            var x = this.directions[i][0]
-            var y = this.directions[i][1]
-            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == character) {
-                    found.push(this.directions[i]);
-                }
-            }
-        }
-        return found
     }
  
+    mul() {
+        this.multiplay++;
+        var found = this.chooseCell(0)
+        var exact = found[Math.floor(Math.random() * found.length)];
+        if (exact && this.multiplay > 6) {
+            let x = exact[0]
+            let y = exact[1]
+            let person = new Person(x, y,1)
+            personArr.push(person)
+            this.multiplay = 0
+        }
+    }
 
 
 }
