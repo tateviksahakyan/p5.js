@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
 io = require('socket.io')(server);
+var fs = require("fs");
 
 app.use(express.static("."));
 
@@ -95,6 +96,36 @@ function game() {
 
 setInterval(game, 1000)
 io.on('connection', function (socket) {
-    createObject(matrix)
+    createObject(matrix);
+    socket.on("kill", kill);
 })
 
+
+
+function kill() {
+    personArr = [];
+    coronaArr = [];
+    docArr = [];
+    hosArr = [];
+    healthyPersonArr = []
+    for (var y = 0; y < matrix.length; y++) {
+        for (var x = 0; x < matrix[y].length; x++) {
+            matrix[y][x] = 1;
+        }
+    }
+    io.sockets.emit("send matrix", matrix);
+}
+
+
+var statistics = {};
+
+setInterval(function() {
+    statistics.person = personArr.length;
+    statistics.coronaArr = coronaArr.length;
+    statistics.docArr = docArr.length;
+    statistics.hosArr = hosArr.length;
+    statistics.healthyPersonArr = healthyPersonArr.length;
+    fs.writeFile("statistics.json", JSON.stringify(statistics), function(){
+        
+    })
+},1000)

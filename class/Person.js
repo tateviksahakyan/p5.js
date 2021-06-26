@@ -15,6 +15,7 @@ module.exports= class Person  extends Main{
             let person = new Person(x, y,1)
             personArr.push(person)
             this.multiplay = 0
+    
         }
     }
 

@@ -12,7 +12,8 @@ function preload() {
     corona = loadImage('https://thumbs.dreamstime.com/b/coronavirus-evil-virus-cartoon-character-face-mask-against-covid-vector-illustration-isolated-white-coronavirus-covid-evil-175340881.jpg')
     doc = loadImage('https://thumbs.dreamstime.com/b/cartoon-doctor-fighting-big-green-virus-cure-coronavirus-fight-covid-concept-flat-vector-illustration-corona-isolated-white-177241588.jpg')
     hospital = loadImage('https://c8.alamy.com/comp/2BAPCT4/medical-character-vector-concept-design-doctor-and-nurse-characters-monitoring-giving-treatment-and-medicine-to-corona-virus-infected-patient-2BAPCT4.jpg')
-    healthy = loadImage('https://thumbs.dreamstime.com/b/recovered-185475535.jpg')
+    healthy = loadImage('https://thumbs.dreamstime.com/b/recovered-185475535.jpg');
+    bed=loadImage('https://thumbs.dreamstime.com/b/hospital-bed-white-background-illustration-176792828.jpg')
 }
 
 
@@ -23,9 +24,10 @@ function nkarel(matrix) {
             let obj=matrix[y][x]
             if ( obj== 1) {
                 fill(0, 0, 0);
-                image(human, x * side, y * side, side, side);
+                image(bed, x * side, y * side, side, side);
             } else if (obj == 0) {
-                fill('white');
+                fill(0, 0, 0);
+                image(human, x * side, y * side, side, side);
             } else if (obj == 2) {
                 fill(0, 0, 0);
                 image(corona, x * side, y * side, side, side);
@@ -41,9 +43,6 @@ function nkarel(matrix) {
             }
 
 
-            for (var i in personArr) {
-                var emptyCells = personArr[i].chooseCell(0)
-            }
         }
     }
 
@@ -54,3 +53,7 @@ setInterval(
     },1000
 )
 
+
+function kill() {
+    socket.emit("kill")
+}
