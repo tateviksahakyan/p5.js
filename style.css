@@ -126,7 +126,7 @@ body {
 	position: relative;
 	display: inline-block;
 	font-size: 40px;
-	color: #545454;
+	color: #3c3c3c;
 	text-transform: uppercase;
 	animation: waviy 1s infinite;
 	animation-delay: calc(.1s * var(--i))
